@@ -1,0 +1,99 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the com.github.aharotias2.passger package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: com.github.aharotias2.passger\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-09-23 23:51+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/PassGer.vala:45
+msgid "PassGer - A simple password generator"
+msgstr ""
+
+#: src/PassGerWidget.vala:81
+msgid "Length: "
+msgstr ""
+
+#: src/PassGerWidget.vala:93
+msgid ""
+"You can specify the password length using the \n"
+"spin box on the left.\n"
+"You can also specify the type of characters \n"
+"used for each character in the password using \n"
+"the table below.\n"
+"You can select the type of characters from \n"
+"uppercase letters, lowercase letters, numbers, \n"
+"and punctuation characters.\n"
+"You can select or deselect all character types \n"
+"for that column by clicking the column header.\n"
+"Specify at least one type for each row."
+msgstr ""
+
+#: src/PassGerWidget.vala:170
+msgid "Generate!"
+msgstr ""
+
+#: src/PassGerWidget.vala:256
+msgid ""
+"There is not enough characters available.\n"
+"Please add available characters on the right panel.\n"
+"Or uncheck the “Do not use duplicated characters” checkbox."
+msgstr ""
+
+#: src/PassGerWidget.vala:264
+msgid ""
+"Setting is invalid. At least 1 Character should be selected on each type "
+"(upper, lower, digit, punct)"
+msgstr ""
+
+#: src/PassGerWidget.vala:267
+msgid "At least 1 check should be checked on each rows."
+msgstr ""
+
+#: src/PassGerConfigWidget.vala:46
+msgid "Character Setting"
+msgstr ""
+
+#: src/PassGerConfigWidget.vala:55
+msgid ""
+"Here you can specify the characters used to generate the password.\n"
+"The pressed characters are used to generate the password.\n"
+"On the contrary, the characters that are not pressed are not used for \n"
+"password generation.\n"
+"At least one character should be pressed on each category."
+msgstr ""
+
+#: src/PassGerConfigWidget.vala:76
+msgid "Uppercase Letters"
+msgstr ""
+
+#: src/PassGerConfigWidget.vala:86
+msgid "Lowercase Letters"
+msgstr ""
+
+#: src/PassGerConfigWidget.vala:95
+msgid "Digital characters"
+msgstr ""
+
+#: src/PassGerConfigWidget.vala:104
+msgid "Punctuation Characters"
+msgstr ""
+
+#: src/PassGerConfigWidget.vala:113
+msgid "Other Settings"
+msgstr ""
+
+#: src/PassGerConfigWidget.vala:117
+msgid "Do not use duplicated characters"
+msgstr ""

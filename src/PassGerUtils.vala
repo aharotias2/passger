@@ -3,17 +3,17 @@ public class PassGerUtils {
         // Don't create instances.
     }
     
-    private static bool char_type_accept(CharType type, char c, PassGerConfig config) {
-        if (UPPER in type && c.isupper() && config.upper_set[c]) {
+    private static bool is_char_acceptable(char c, CharType acceptable_type, PassGerConfig config) {
+        if (UPPER in acceptable_type && c.isupper() && config.upper_set[c]) {
             config.upper_set[c] = config.use_duplicated_chars;
             return true;
-        } else if (LOWER in type && c.islower() && config.lower_set[c]) {
+        } else if (LOWER in acceptable_type && c.islower() && config.lower_set[c]) {
             config.lower_set[c] = config.use_duplicated_chars;
             return true;
-        } else if (DIGIT in type && c.isdigit() && config.digit_set[c]) {
+        } else if (DIGIT in acceptable_type && c.isdigit() && config.digit_set[c]) {
             config.digit_set[c] = config.use_duplicated_chars;
             return true;
-        } else if (PUNCT in type && c.ispunct() && config.punct_set[c]) {
+        } else if (PUNCT in acceptable_type && c.ispunct() && config.punct_set[c]) {
             config.punct_set[c] = config.use_duplicated_chars;
             return true;
         } else {
@@ -53,13 +53,12 @@ public class PassGerUtils {
             int length = flags.length;
             uint8[] buffer = new uint8[length];
             int count = 0;
-            bool is_prev_consonants = false;
             File random_file = File.new_for_path("/dev/random");
             DataInputStream reader = new DataInputStream(random_file.read());
             while (count < length) {
                 char c = (char) reader.read_byte();
                 CharType type = flags[count];
-                if (char_type_accept(type, c, config)) {
+                if (is_char_acceptable(c, type, config)) {
                     buffer[count] = (uint8) c;
                     if (is_not_enough_chars(type, config)) {
                         return (string) buffer;

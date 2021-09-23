@@ -43,7 +43,7 @@ public class PassGerConfigWidget : Box {
         
         var box_label1 = new Box(HORIZONTAL, 5);
         {
-            var charset_label = new Label("Character Setting") {
+            var charset_label = new Label(_("Character Setting")) {
                 halign = START
             };
             
@@ -51,10 +51,12 @@ public class PassGerConfigWidget : Box {
             {
                 var pop_help1 = new Popover(button_help1);
                 {
-                    var label_help1 = new Label("Here you can specify the characters used to generate the password.\n"
+                    var label_help1 = new Label(
+                            _("Here you can specify the characters used to generate the password.\n"
                             + "The pressed characters are used to generate the password.\n"
-                            + "On the contrary, the characters that are not pressed are not used for password generation.\n"
-                            + "At least one character should be pressed on each category.");
+                            + "On the contrary, the characters that are not pressed are not used for \n"
+                            + "password generation.\n"
+                            + "At least one character should be pressed on each category."));
                     
                     pop_help1.add(label_help1);
                     pop_help1.border_width = 10;
@@ -71,7 +73,7 @@ public class PassGerConfigWidget : Box {
             box_label1.pack_start(button_help1, false, false);
         }
         
-        var frame_upper = new Frame("Uppercase Letters");
+        var frame_upper = new Frame(_("Uppercase Letters"));
         {
             var box_upper = new FlowBox() {
                 min_children_per_line = 10,
@@ -81,7 +83,7 @@ public class PassGerConfigWidget : Box {
             frame_upper.add(box_upper);
         }
 
-        var frame_lower = new Frame("Lowercase Letters");
+        var frame_lower = new Frame(_("Lowercase Letters"));
         {
             var box_lower = new FlowBox() {
                 selection_mode = NONE
@@ -90,7 +92,7 @@ public class PassGerConfigWidget : Box {
             frame_lower.add(box_lower);
         }
 
-        var frame_digit = new Frame("Digital characters");
+        var frame_digit = new Frame(_("Digital characters"));
         {
             var box_digit = new FlowBox() {
                 selection_mode = NONE
@@ -99,7 +101,7 @@ public class PassGerConfigWidget : Box {
             frame_digit.add(box_digit);
         }
 
-        var frame_punct = new Frame("Punctuation Characters");
+        var frame_punct = new Frame(_("Punctuation Characters"));
         {
             var box_punct = new FlowBox() {
                 selection_mode = NONE
@@ -108,11 +110,11 @@ public class PassGerConfigWidget : Box {
             frame_punct.add(box_punct);
         }
         
-        var frame_other = new Frame("Other Settings");
+        var frame_other = new Frame(_("Other Settings"));
         {
             var box_other = new Box(VERTICAL, 5);
             {
-                toggle_use_duplicated_chars = new CheckButton.with_label("Do not use duplicated characters") {
+                toggle_use_duplicated_chars = new CheckButton.with_label(_("Do not use duplicated characters")) {
                     active = false
                 };
 

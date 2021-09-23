@@ -42,7 +42,7 @@ int main(string[] args) {
         }
         window.add(top_box);
         window.show_all();
-        window.title = "PassGer - A simple password generator";
+        window.title = _("PassGer - A simple password generator");
     });
     return app.run(args);
 }

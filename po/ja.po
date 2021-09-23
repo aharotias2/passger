@@ -1,0 +1,117 @@
+# Japanese translations for com.github.aharotias2.passger package.
+# Copyright (C) 2021 THE com.github.aharotias2.passger'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the com.github.aharotias2.passger package.
+# Automatically generated, 2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: com.github.aharotias2.passger\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-09-23 23:51+0900\n"
+"PO-Revision-Date: 2021-09-23 23:47+0900\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/PassGer.vala:45
+msgid "PassGer - A simple password generator"
+msgstr "PassGer - 簡易なパスワード生成アプリ"
+
+#: src/PassGerWidget.vala:81
+msgid "Length: "
+msgstr "文字数: "
+
+#: src/PassGerWidget.vala:93
+msgid ""
+"You can specify the password length using the \n"
+"spin box on the left.\n"
+"You can also specify the type of characters \n"
+"used for each character in the password using \n"
+"the table below.\n"
+"You can select the type of characters from \n"
+"uppercase letters, lowercase letters, numbers, \n"
+"and punctuation characters.\n"
+"You can select or deselect all character types \n"
+"for that column by clicking the column header.\n"
+"Specify at least one type for each row."
+msgstr ""
+"パスワードの文字数を左のスピンボタンから指定できます。\n"
+"また各文字に使用する文字の種類を下の表から指定できます。\n"
+"文字の種類は英大文字(ABC)、英小文字(abc)、数字(123)、記号($%&)\n"
+"から選択できます。\n"
+"各列のヘッダーをクリックするとその列のチェックを全て選択、\n"
+"または解除できます。\n"
+"各行で少なくとも一つの文字種を選択してください。"
+
+#: src/PassGerWidget.vala:170
+msgid "Generate!"
+msgstr "パスワード生成！"
+
+#: src/PassGerWidget.vala:256
+msgid ""
+"There is not enough characters available.\n"
+"Please add available characters on the right panel.\n"
+"Or uncheck the “Do not use duplicated characters” checkbox."
+msgstr ""
+"十分に使用可能な文字がありません。\n"
+"使用可能な文字を右のパネルで追加してください。\n"
+"または右下の「重複する文字を使用しない」のチェックを外してください。"
+
+#: src/PassGerWidget.vala:264
+msgid ""
+"Setting is invalid. At least 1 Character should be selected on each type "
+"(upper, lower, digit, punct)"
+msgstr ""
+"設定に謝りがあります。各グループにつき少なくとも一つの文字を選択してください。\n"
+"(英大文字、英小文字、数字、記号文字)"
+
+#: src/PassGerWidget.vala:267
+msgid "At least 1 check should be checked on each rows."
+msgstr ""
+"各行につき少なくとも一つの文字種を選択してください。"
+
+#: src/PassGerConfigWidget.vala:46
+msgid "Character Setting"
+msgstr "文字設定"
+
+#: src/PassGerConfigWidget.vala:55
+msgid ""
+"Here you can specify the characters used to generate the password.\n"
+"The pressed characters are used to generate the password.\n"
+"On the contrary, the characters that are not pressed are not used for \n"
+"password generation.\n"
+"At least one character should be pressed on each category."
+msgstr ""
+"ここではパスワード生成に使用する文字を指定できます。\n"
+"押下された状態の文字はパスワードに使用されます。\n"
+"反対に押下されていない状態の文字はパスワード生成に\n"
+"使用されません。\n"
+"グループごとに少なくとも一文字は指定してください。"
+
+#: src/PassGerConfigWidget.vala:76
+msgid "Uppercase Letters"
+msgstr "英大文字"
+
+#: src/PassGerConfigWidget.vala:86
+msgid "Lowercase Letters"
+msgstr "英小文字"
+
+#: src/PassGerConfigWidget.vala:95
+msgid "Digital characters"
+msgstr "数字"
+
+#: src/PassGerConfigWidget.vala:104
+msgid "Punctuation Characters"
+msgstr "記号文字"
+
+#: src/PassGerConfigWidget.vala:113
+msgid "Other Settings"
+msgstr "その他の設定"
+
+#: src/PassGerConfigWidget.vala:117
+msgid "Do not use duplicated characters"
+msgstr "重複する文字を使用しない"

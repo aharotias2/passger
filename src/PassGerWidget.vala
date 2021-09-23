@@ -78,7 +78,7 @@ public class PassGerWidget : Box {
         
         var password_length_box = new Box(HORIZONTAL, 0);
         {
-            var password_length_label = new Label("Length: ");
+            var password_length_label = new Label(_("Length: "));
             password_length_setter = new SpinButton.with_range(/*min*/ 1.0, /*max*/ 1024.0, /*step*/ 1.0) {
                 value = DEFAULT_PASSWORD_LENGTH
             };
@@ -90,7 +90,7 @@ public class PassGerWidget : Box {
                 var pop_help1 = new Popover(button_help1);
                 {
                     var label_help1 = new Label(
-                            "You can specify the password length using the \n"
+                            _("You can specify the password length using the \n"
                             + "spin box on the left.\n"
                             + "You can also specify the type of characters \n"
                             + "used for each character in the password using \n"
@@ -100,7 +100,7 @@ public class PassGerWidget : Box {
                             + "and punctuation characters.\n"
                             + "You can select or deselect all character types \n"
                             + "for that column by clicking the column header.\n"
-                            + "Specify at least one type for each row.");
+                            + "Specify at least one type for each row."));
                     
                     pop_help1.add(label_help1);
                     pop_help1.border_width = 10;
@@ -167,7 +167,7 @@ public class PassGerWidget : Box {
             list_view.headers_clickable = true;
         }
         
-        generate_button = new Button.with_label("Generate!");
+        generate_button = new Button.with_label(_("Generate!"));
         {
             generate_button.clicked.connect(() => {
                 generate_password();
@@ -253,18 +253,18 @@ public class PassGerWidget : Box {
             if (new_password != null) {
                 if (new_password.length < settings.length) {
                     Idle.add(() => {
-                        require_alert("There is not enough characters available.\n"
+                        require_alert(_("There is not enough characters available.\n"
                                 + "Please add available characters on the right panel.\n"
-                                + "Or uncheck the “Do not use duplicated characters” checkbox.");
+                                + "Or uncheck the “Do not use duplicated characters” checkbox."));
                         return false;
                     });
                 }
                 password_entry.text = new_password;
             } else {
-                require_alert("Setting is invalid. At least 1 Character should be selected on each type (upper, lower, digit, punct)");
+                require_alert(_("Setting is invalid. At least 1 Character should be selected on each type (upper, lower, digit, punct)"));
             }
         } else {
-            require_alert("At least 1 check should be checked on each rows.");
+            require_alert(_("At least 1 check should be checked on each rows."));
         }
     }
     
