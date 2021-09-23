@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=PassGer
+GenericName=Password Generator
+Comment=A simple password generator. you can specify the type of characters to use for each index of the password.
+Exec=passger
+Terminal=false
+StartupNotify=false
+Type=Application
+Categories=Accessary
+Icon=passger
