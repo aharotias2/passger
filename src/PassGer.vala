@@ -1,5 +1,5 @@
 int main(string[] args) {
-    var app = new Gtk.Application("com.github.aharotias2.pass-gener", FLAGS_NONE);
+    var app = new Gtk.Application("com.github.aharotias2.passger", FLAGS_NONE);
     app.activate.connect(() => {
         var window = new Gtk.ApplicationWindow(app);
         Gtk.Clipboard clipboard = Gtk.Clipboard.get_default(window.get_display());
