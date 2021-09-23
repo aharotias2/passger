@@ -30,6 +30,12 @@ Build
 
     $ make
 
+or if you want to use meson build system, try this:
+
+    $ meson build --prefix=/usr
+	$ cd build
+	$ meson compile # or ninja
+
 Install
 ----------------------------------------------------------------------------------------------------
 Running make will generate an executable file called “passger” in the current directory. You can start
@@ -40,6 +46,10 @@ or
 Use `make install` command with a variable `PREFIX`.
 
     $ make intsall PREFIX=~/.local
+
+If you are using meson, try this on the build directory:
+
+    $ sudo meson install
 
 Credit
 ----------------------------------------------------------------------------------------------------
