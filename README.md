@@ -43,4 +43,4 @@ Use `make install` command with a variable `PREFIX`.
 
 Credit
 ----------------------------------------------------------------------------------------------------
-Copyright 2021 (C) Tanaka Takayuki <https://github.com/aharotias>
+Copyright 2021 (C) Tanaka Takayuki <https://github.com/aharotias2>
