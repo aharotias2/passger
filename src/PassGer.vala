@@ -1,12 +1,20 @@
 int main(string[] args) {
     var app = new Gtk.Application("com.github.aharotias2.pass-gener", FLAGS_NONE);
     app.activate.connect(() => {
-        PassGerWidget widget1 = new PassGerWidget();
-        PassGerConfigWidget widget2 = new PassGerConfigWidget();
         var window = new Gtk.ApplicationWindow(app);
         Gtk.Clipboard clipboard = Gtk.Clipboard.get_default(window.get_display());
         var top_box = new Gtk.Box(HORIZONTAL, 4);
         {
+            PassGerConfigWidget widget2 = new PassGerConfigWidget();
+            Idle.add(() => {
+                top_box.pack_start(widget2, false, false);
+                window.show_all();
+                widget2.visible = false;
+                window.resize(1, 1);
+                return false;
+            });
+            
+            PassGerWidget widget1 = new PassGerWidget();
             widget1.require_other_settings.connect(() => {
                 return widget2.get_config();
             });
@@ -31,13 +39,10 @@ int main(string[] args) {
             });
 
             top_box.pack_start(widget1, false, false);
-            top_box.pack_start(widget2, false, false);
         }
         window.add(top_box);
-        window.title = "PassGer - A simple password generator";
         window.show_all();
-        widget2.visible = false;
-        window.resize(1, 1);
+        window.title = "PassGer - A simple password generator";
     });
     return app.run(args);
 }
