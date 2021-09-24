@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.aharotias2.passger\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-23 23:51+0900\n"
+"POT-Creation-Date: 2021-09-24 22:01+0900\n"
 "PO-Revision-Date: 2021-09-23 23:47+0900\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -21,11 +21,11 @@ msgstr ""
 msgid "PassGer - A simple password generator"
 msgstr "PassGer - 簡易なパスワード生成アプリ"
 
-#: src/PassGerWidget.vala:81
+#: src/PassGerWidget.vala:79
 msgid "Length: "
 msgstr "文字数: "
 
-#: src/PassGerWidget.vala:93
+#: src/PassGerWidget.vala:91
 msgid ""
 "You can specify the password length using the \n"
 "spin box on the left.\n"
@@ -47,11 +47,11 @@ msgstr ""
 "または解除できます。\n"
 "各行で少なくとも一つの文字種を選択してください。"
 
-#: src/PassGerWidget.vala:170
+#: src/PassGerWidget.vala:169
 msgid "Generate!"
 msgstr "パスワード生成！"
 
-#: src/PassGerWidget.vala:256
+#: src/PassGerWidget.vala:255
 msgid ""
 "There is not enough characters available.\n"
 "Please add available characters on the right panel.\n"
@@ -61,18 +61,18 @@ msgstr ""
 "使用可能な文字を右のパネルで追加してください。\n"
 "または右下の「重複する文字を使用しない」のチェックを外してください。"
 
-#: src/PassGerWidget.vala:264
+#: src/PassGerWidget.vala:263
 msgid ""
 "Setting is invalid. At least 1 Character should be selected on each type "
 "(upper, lower, digit, punct)"
 msgstr ""
-"設定に謝りがあります。各グループにつき少なくとも一つの文字を選択してください。\n"
+"設定に謝りがあります。各グループにつき少なくとも一つの文字を選択してくださ"
+"い。\n"
 "(英大文字、英小文字、数字、記号文字)"
 
-#: src/PassGerWidget.vala:267
+#: src/PassGerWidget.vala:266
 msgid "At least 1 check should be checked on each rows."
-msgstr ""
-"各行につき少なくとも一つの文字種を選択してください。"
+msgstr "各行につき少なくとも一つの文字種を選択してください。"
 
 #: src/PassGerConfigWidget.vala:46
 msgid "Character Setting"
@@ -115,3 +115,12 @@ msgstr "その他の設定"
 #: src/PassGerConfigWidget.vala:117
 msgid "Do not use duplicated characters"
 msgstr "重複する文字を使用しない"
+
+#: src/PassGerMath.vala:10
+msgid "Failed to open random file. exit."
+msgstr "ランダムファイルを開くことに失敗しました。強制終了します。"
+
+#: src/PassGerMath.vala:22
+#, c-format
+msgid "IOError: random_byte was failed (%s))"
+msgstr "ランダムファイルの読み取りに失敗しました。(%s)"

@@ -1,3 +1,24 @@
+/*
+ *  Copyright 2021 Tanaka Takayuki (田中喬之)
+ *
+ *  This file is part of PassGer.
+ *
+ *  PassGer is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  PassGer is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with PassGer.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ *  Tanaka Takayuki <aharotias2@gmail.com>
+ */
+
 using Gtk;
 
 public class PassGerWidget : Box {
@@ -60,21 +81,19 @@ public class PassGerWidget : Box {
         var entry_box = new Box(HORIZONTAL, 0);
         {
             password_entry = new Entry() {
-                primary_icon_name = "dialog-password-symbolic"
+                primary_icon_name = "dialog-password-symbolic",
+                secondary_icon_name = "edit-copy-symbolic"
             };
-
-            var clipboard_button = new Button.from_icon_name("edit-copy-symbolic") {
-                tooltip_text = "copy to the clipboard"
-            };
-            clipboard_button.clicked.connect(() => {
-                require_clipboard_copy(password_entry.text);
+            password_entry.icon_press.connect((pos, ev) => {
+                if (pos == PRIMARY) {
+                    generate_password();
+                } else {
+                    require_clipboard_copy(password_entry.text);
+                }
             });
             
             entry_box.pack_start(password_entry, true, true);
-            entry_box.pack_start(clipboard_button, false, false);
-            entry_box.hexpand = true;
         }
-        
         
         var password_length_box = new Box(HORIZONTAL, 0);
         {
@@ -165,6 +184,11 @@ public class PassGerWidget : Box {
             list_view.append_column(col5);
             
             list_view.headers_clickable = true;
+            list_view.activate_on_single_click = true;
+            list_view.row_activated((path, column) => {
+                TreeIter iter;
+                model.get_iter(out iter, path);
+                model.set
         }
         
         generate_button = new Button.with_label(_("Generate!"));

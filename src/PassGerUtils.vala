@@ -1,3 +1,24 @@
+/*
+ *  Copyright 2021 Tanaka Takayuki (田中喬之)
+ *
+ *  This file is part of PassGer.
+ *
+ *  PassGer is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  PassGer is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with PassGer.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ *  Tanaka Takayuki <aharotias2@gmail.com>
+ */
+
 public class PassGerUtils {
     private PassGerUtils() {
         // Don't create instances.
@@ -49,27 +70,20 @@ public class PassGerUtils {
     }
     
     public static string? generate(CharType[] flags, PassGerConfig config) {
-        try {
-            int length = flags.length;
-            uint8[] buffer = new uint8[length];
-            int count = 0;
-            File random_file = File.new_for_path("/dev/random");
-            DataInputStream reader = new DataInputStream(random_file.read());
-            while (count < length) {
-                char c = (char) reader.read_byte();
-                CharType type = flags[count];
-                if (is_char_acceptable(c, type, config)) {
-                    buffer[count] = (uint8) c;
-                    if (is_not_enough_chars(type, config)) {
-                        return (string) buffer;
-                    }
-                    count++;
+        int length = flags.length;
+        uint8[] buffer = new uint8[length];
+        int count = 0;
+        while (count < length) {
+            char c = PassGerMath.random_char();
+            CharType type = flags[count];
+            if (is_char_acceptable(c, type, config)) {
+                buffer[count] = (uint8) c;
+                if (is_not_enough_chars(type, config)) {
+                    return (string) buffer;
                 }
+                count++;
             }
-            return (string) buffer;
-        } catch (Error e) {
-            stderr.printf("%s\n", e.message);
-            return null;
         }
+        return (string) buffer;
     }
 }

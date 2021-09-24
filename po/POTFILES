@@ -1,3 +1,4 @@
 src/PassGer.vala
 src/PassGerWidget.vala
 src/PassGerConfigWidget.vala
+src/PassGerMath.vala

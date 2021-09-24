@@ -12,6 +12,7 @@ sources = files(
   'src/PassGerConfigWidget.vala',
   'src/PassGerConfig.vala',
   'src/PassGerUtils.vala',
+  'src/PassGerMath.vala',
   'src/CharType.vala'
 )
 
