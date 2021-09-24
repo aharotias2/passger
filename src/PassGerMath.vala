@@ -40,7 +40,7 @@ public class PassGerMath {
             }
             return (char) reader.read_byte();
         } catch (IOError e) {
-            stderr.printf(_("IOError: random_byte was failed (%s))", e.message);
+            stderr.printf(_("IOError: random_byte was failed (%s))"), e.message);
             Process.exit(127);
         }
     }

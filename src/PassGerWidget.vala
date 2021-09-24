@@ -184,11 +184,6 @@ public class PassGerWidget : Box {
             list_view.append_column(col5);
             
             list_view.headers_clickable = true;
-            list_view.activate_on_single_click = true;
-            list_view.row_activated((path, column) => {
-                TreeIter iter;
-                model.get_iter(out iter, path);
-                model.set
         }
         
         generate_button = new Button.with_label(_("Generate!"));
