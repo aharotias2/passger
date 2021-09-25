@@ -148,7 +148,8 @@ public class PassGerWidget : Box {
             list_view.append_column(col1);
             
             CellRendererPixbuf icon_renderer = new CellRendererPixbuf();
-            TreeViewColumn col2 = new TreeViewColumn.with_attributes("Lock", icon_renderer, "icon-name", Column.IS_LOCKED);
+            TreeViewColumn col2 = new TreeViewColumn.with_attributes("-", icon_renderer, "icon-name", Column.IS_LOCKED);
+            col2.set_alignment(0.5f);
             list_view.append_column(col2);
             
             CellRendererToggle toggle_renderer_upper = new CellRendererToggle();
