@@ -21,12 +21,13 @@
 
 public class PassGerMath {
     private static File? random_file;
-    private static DataInputStream? reader;
-
-    private static void init() {
-        try {
+    
+    private static DataInputStream get_reader() {
+        if (random_file == null) {
             random_file = File.new_for_path("/dev/random");
-            reader = new DataInputStream(random_file.read());
+        }
+        try {
+            return new DataInputStream(random_file.read());
         } catch (Error e) {
             stderr.printf(_("Failed to open random file. exit."));
             Process.exit(127);
@@ -34,10 +35,8 @@ public class PassGerMath {
     }
     
     public static char random_char() {
+        DataInputStream? reader = get_reader();
         try {
-            if (reader == null) {
-                init();
-            }
             return (char) reader.read_byte();
         } catch (IOError e) {
             stderr.printf(_("IOError: random_byte was failed (%s))"), e.message);

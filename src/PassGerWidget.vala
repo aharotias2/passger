@@ -299,15 +299,15 @@ public class PassGerWidget : Box {
         int i = 0;
         do {
             CharTypeStruct setting = { false, false, false, false };
+            string lock_icon_name;
             model.get(iter,
                 Column.ENABLE_UPPER, out setting.enable_upper,
                 Column.ENABLE_LOWER, out setting.enable_lower,
                 Column.ENABLE_DIGIT, out setting.enable_digit,
-                Column.ENABLE_PUNCT, out setting.enable_punct
+                Column.ENABLE_PUNCT, out setting.enable_punct,
+                Column.IS_LOCKED, out lock_icon_name
             );
-            string icon_name;
-            model.get(iter, Column.IS_LOCKED, out icon_name);
-            if (icon_name == "changes-prevent-symbolic") {
+            if (lock_icon_name == "changes-prevent-symbolic") {
                 setting.is_locked = true;
             } else {
                 setting.is_locked = false;
