@@ -21,5 +21,5 @@
 
 [Flags]
 public enum CharType {
-    UPPER, LOWER, DIGIT, PUNCT, LOCK
+    UPPER, LOWER, DIGIT, PUNCT, IS_LOCKED
 }

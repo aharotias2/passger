@@ -24,6 +24,7 @@ using Gtk;
 public class PassGerWidget : Box {
     private enum Column {
         INDEX = 0,
+        IS_LOCKED,
         ENABLE_UPPER,
         ENABLE_LOWER,
         ENABLE_DIGIT,
@@ -47,7 +48,8 @@ public class PassGerWidget : Box {
     private TreeView list_view;
     private Button generate_button;
     private bool pan_button_clicked;
-
+    private bool is_toggled;
+    
     public PassGerWidget() {
         Object(
             orientation: Orientation.VERTICAL,
@@ -65,11 +67,11 @@ public class PassGerWidget : Box {
             pan_button.clicked.connect(() => {
                 if (!pan_button_clicked) {
                     pan_button_clicked = true;
-                    (pan_button.image as Image).icon_name = "pan-start-symbolic";
+                    ((Image) pan_button.image).icon_name = "pan-start-symbolic";
                     require_open_setting();
                 } else {
                     pan_button_clicked = false;
-                    (pan_button.image as Image).icon_name = "pan-end-symbolic";
+                    ((Image) pan_button.image).icon_name = "pan-end-symbolic";
                     require_close_setting();
                 }
             });
@@ -104,6 +106,7 @@ public class PassGerWidget : Box {
             password_length_setter.value_changed.connect(() => {
                 change_length();
             });
+            
             var button_help1 = new Button.from_icon_name("help-faq-symbolic");
             {
                 var pop_help1 = new Popover(button_help1);
@@ -139,51 +142,71 @@ public class PassGerWidget : Box {
         list_view = new TreeView.with_model(model);
         {
             CellRendererText text_renderer = new CellRendererText();
-            text_renderer.alignment = RIGHT;
+            text_renderer.xalign = 1.0f;
             TreeViewColumn col1 = new TreeViewColumn.with_attributes("#", text_renderer, "text", Column.INDEX);
+            col1.set_alignment(1.0f);
             list_view.append_column(col1);
+            
+            CellRendererPixbuf icon_renderer = new CellRendererPixbuf();
+            TreeViewColumn col2 = new TreeViewColumn.with_attributes("Lock", icon_renderer, "icon-name", Column.IS_LOCKED);
+            list_view.append_column(col2);
             
             CellRendererToggle toggle_renderer_upper = new CellRendererToggle();
             toggle_renderer_upper.toggled.connect((path_str) => {
                 toggle(new TreePath.from_string(path_str), Column.ENABLE_UPPER);
             });
-            TreeViewColumn col2 = new TreeViewColumn.with_attributes("ABC", toggle_renderer_upper, "active", Column.ENABLE_UPPER);
-            col2.clicked.connect(() => {
+            TreeViewColumn col3 = new TreeViewColumn.with_attributes("ABC", toggle_renderer_upper, "active", Column.ENABLE_UPPER);
+            col3.clicked.connect(() => {
                 toggle_all(Column.ENABLE_UPPER);
             });
-            list_view.append_column(col2);
+            list_view.append_column(col3);
             
             CellRendererToggle toggle_renderer_lower = new CellRendererToggle();
             toggle_renderer_lower.toggled.connect((path_str) => {
                 toggle(new TreePath.from_string(path_str), Column.ENABLE_LOWER);
             });
-            TreeViewColumn col3 = new TreeViewColumn.with_attributes("abc", toggle_renderer_lower, "active", Column.ENABLE_LOWER);
-            col3.clicked.connect(() => {
+            TreeViewColumn col4 = new TreeViewColumn.with_attributes("abc", toggle_renderer_lower, "active", Column.ENABLE_LOWER);
+            col4.clicked.connect(() => {
                 toggle_all(Column.ENABLE_LOWER);
             });
-            list_view.append_column(col3);
+            list_view.append_column(col4);
 
             CellRendererToggle toggle_renderer_digit = new CellRendererToggle();
             toggle_renderer_digit.toggled.connect((path_str) => {
                 toggle(new TreePath.from_string(path_str), Column.ENABLE_DIGIT);
             });
-            TreeViewColumn col4 = new TreeViewColumn.with_attributes("123", toggle_renderer_digit, "active", Column.ENABLE_DIGIT);
-            col4.clicked.connect(() => {
+            TreeViewColumn col5 = new TreeViewColumn.with_attributes("123", toggle_renderer_digit, "active", Column.ENABLE_DIGIT);
+            col5.clicked.connect(() => {
                 toggle_all(Column.ENABLE_DIGIT);
             });
-            list_view.append_column(col4);
+            list_view.append_column(col5);
 
             CellRendererToggle toggle_renderer_punct = new CellRendererToggle();
             toggle_renderer_punct.toggled.connect((path_str) => {
                 toggle(new TreePath.from_string(path_str), Column.ENABLE_PUNCT);
             });
-            TreeViewColumn col5 = new TreeViewColumn.with_attributes("$%&", toggle_renderer_punct, "active", Column.ENABLE_PUNCT);
-            col5.clicked.connect(() => {
+            TreeViewColumn col6 = new TreeViewColumn.with_attributes("$%&", toggle_renderer_punct, "active", Column.ENABLE_PUNCT);
+            col6.clicked.connect(() => {
                 toggle_all(Column.ENABLE_PUNCT);
             });
-            list_view.append_column(col5);
+            list_view.append_column(col6);
             
             list_view.headers_clickable = true;
+            list_view.activate_on_single_click = true;
+            list_view.row_activated.connect((path, column) => {
+                TreeIter iter;
+                model.get_iter(out iter, path);
+                if (!is_toggled) {
+                    string icon_name;
+                    model.get(iter, (int) Column.IS_LOCKED, out icon_name);
+                    if (icon_name == "changes-allow-symbolic") {
+                        model.set(iter, (int) Column.IS_LOCKED, "changes-prevent-symbolic");
+                    } else {
+                        model.set(iter, (int) Column.IS_LOCKED, "changes-allow-symbolic");
+                    }
+                }
+                is_toggled = false;
+            });
         }
         
         generate_button = new Button.with_label(_("Generate!"));
@@ -202,15 +225,20 @@ public class PassGerWidget : Box {
     
     private Gtk.ListStore create_model() {
         Gtk.ListStore model = new Gtk.ListStore(Column.NUM_COLUMNS,
-                typeof(int), typeof(bool), typeof(bool), typeof(bool), typeof(bool));
+                typeof(int), typeof(string), typeof(bool), typeof(bool), typeof(bool), typeof(bool));
         
         TreeIter iter;
         
         for (int i = 0; i < DEFAULT_PASSWORD_LENGTH; i++) {
             model.append(out iter);
             model.set(iter,
-                    Column.INDEX, i + 1, Column.ENABLE_UPPER, true, Column.ENABLE_LOWER, true,
-                    Column.ENABLE_DIGIT, true, Column.ENABLE_PUNCT, true);
+                Column.INDEX, i + 1,
+                Column.IS_LOCKED, "changes-allow-symbolic",
+                Column.ENABLE_UPPER, true,
+                Column.ENABLE_LOWER, true,
+                Column.ENABLE_DIGIT, true,
+                Column.ENABLE_PUNCT, true
+            );
         }
         
         return model;
@@ -221,11 +249,25 @@ public class PassGerWidget : Box {
         int current_length = model.iter_n_children(null);
         TreeIter iter;
         if (current_length < new_length) {
+            bool enable_upper, enable_lower, enable_digit, enable_punct;
+            model.iter_nth_child(out iter, null, current_length - 1);
+            model.get(iter,
+                Column.ENABLE_UPPER, out enable_upper,
+                Column.ENABLE_LOWER, out enable_lower,
+                Column.ENABLE_DIGIT, out enable_digit,
+                Column.ENABLE_PUNCT, out enable_punct
+            );
+            
             while (model.iter_n_children(null) < new_length) {
-                current_length++;
                 model.append(out iter);
-                model.set(iter, Column.INDEX, current_length, Column.ENABLE_UPPER, true, Column.ENABLE_LOWER, true,
-                        Column.ENABLE_DIGIT, true, Column.ENABLE_PUNCT, true);
+                model.set(iter,
+                    Column.INDEX, ++current_length,
+                    Column.IS_LOCKED, "changes-allow-symbolic", 
+                    Column.ENABLE_UPPER, enable_upper,
+                    Column.ENABLE_LOWER, enable_lower,
+                    Column.ENABLE_DIGIT, enable_digit,
+                    Column.ENABLE_PUNCT, enable_punct
+                );
             }
             require_resize_window();
         } else if (new_length < current_length) {
@@ -238,6 +280,7 @@ public class PassGerWidget : Box {
     }
     
     struct CharTypeStruct {
+        public bool is_locked;
         public bool enable_upper;
         public bool enable_lower;
         public bool enable_digit;
@@ -255,20 +298,31 @@ public class PassGerWidget : Box {
         int i = 0;
         do {
             CharTypeStruct setting = { false, false, false, false };
-            model.get(iter, Column.ENABLE_UPPER, out setting.enable_upper);
-            model.get(iter, Column.ENABLE_LOWER, out setting.enable_lower);
-            model.get(iter, Column.ENABLE_DIGIT, out setting.enable_digit);
-            model.get(iter, Column.ENABLE_PUNCT, out setting.enable_punct);
+            model.get(iter,
+                Column.ENABLE_UPPER, out setting.enable_upper,
+                Column.ENABLE_LOWER, out setting.enable_lower,
+                Column.ENABLE_DIGIT, out setting.enable_digit,
+                Column.ENABLE_PUNCT, out setting.enable_punct
+            );
+            string icon_name;
+            model.get(iter, Column.IS_LOCKED, out icon_name);
+            if (icon_name == "changes-prevent-symbolic") {
+                setting.is_locked = true;
+            } else {
+                setting.is_locked = false;
+            }
             settings[i] = (
                 (setting.enable_upper ? CharType.UPPER : 0) |
                 (setting.enable_lower ? CharType.LOWER : 0) |
                 (setting.enable_digit ? CharType.DIGIT : 0) |
-                (setting.enable_punct ? CharType.PUNCT : 0)
+                (setting.enable_punct ? CharType.PUNCT : 0) |
+                (setting.is_locked ? CharType.IS_LOCKED : 0)
             );
             i++;
         } while (model.iter_next(ref iter));
         if (!is_all_zeros(settings)) {
-            string? new_password = PassGerUtils.generate(settings, other_settings);
+            string old_password = password_entry.text;
+            string? new_password = PassGerUtils.generate(settings, other_settings, old_password);
             if (new_password != null) {
                 if (new_password.length < settings.length) {
                     Idle.add(() => {
@@ -289,10 +343,15 @@ public class PassGerWidget : Box {
     
     private void toggle(TreePath path, Column column) {
         TreeIter iter;
-        bool state;
         model.get_iter(out iter, path);
-        model.get(iter, (int) column, out state);
-        model.set(iter, (int) column, !state);
+        string? lock_icon_name;
+        model.get(iter, (int) Column.IS_LOCKED, out lock_icon_name);
+        if (lock_icon_name == "changes-allow-symbolic") {
+            bool state;
+            model.get(iter, (int) column, out state);
+            model.set(iter, (int) column, !state);
+        }
+        is_toggled = true;
     }
     
     private void toggle_all(Column column) {

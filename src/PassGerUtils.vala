@@ -69,14 +69,17 @@ public class PassGerUtils {
         return count == 0;
     }
     
-    public static string? generate(CharType[] flags, PassGerConfig config) {
+    public static string? generate(CharType[] flags, PassGerConfig config, string old_password) {
         int length = flags.length;
         uint8[] buffer = new uint8[length];
         int count = 0;
         while (count < length) {
             char c = PassGerMath.random_char();
             CharType type = flags[count];
-            if (is_char_acceptable(c, type, config)) {
+            if (IS_LOCKED in type && count < old_password.length) {
+                buffer[count] = old_password[count];
+                count++;
+            } else if (is_char_acceptable(c, type, config)) {
                 buffer[count] = (uint8) c;
                 if (is_not_enough_chars(type, config)) {
                     return (string) buffer;
