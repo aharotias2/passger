@@ -21,13 +21,20 @@
 
 public class PassGerMath {
     private static File? random_file;
+    private static DataInputStream? data_reader;
     
-    private static DataInputStream get_reader() {
-        if (random_file == null) {
-            random_file = File.new_for_path("/dev/random");
-        }
+    private static unowned DataInputStream get_reader() {
         try {
-            return new DataInputStream(random_file.read());
+            if (data_reader == null) {
+                random_file = File.new_for_path("/dev/random");
+                data_reader = new DataInputStream(random_file.read());
+                Timeout.add(5000, () => {
+                    random_file = null;
+                    data_reader = null;
+                    return false;
+                });
+            }
+            return data_reader;
         } catch (Error e) {
             stderr.printf(_("Failed to open random file. exit."));
             Process.exit(127);
@@ -35,9 +42,8 @@ public class PassGerMath {
     }
     
     public static char random_char() {
-        DataInputStream? reader = get_reader();
         try {
-            return (char) reader.read_byte();
+            return (char) (get_reader().read_byte());
         } catch (IOError e) {
             stderr.printf(_("IOError: random_byte was failed (%s))"), e.message);
             Process.exit(127);
