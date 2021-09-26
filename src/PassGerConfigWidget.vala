@@ -163,7 +163,7 @@ public class PassGerConfigWidget : Box {
     
     private Widget create_character_button(Object item) {
         CharacterSetting? character_setting = item as CharacterSetting;
-        var toggle = new ToggleButton.with_label(character_setting.character.to_string()) {
+        var toggle = new CheckButton.with_label(character_setting.character.to_string()) {
             active = true
         };
         toggle.toggled.connect(() => {
