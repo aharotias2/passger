@@ -147,12 +147,12 @@ public class PassGerConfigWidget : Box {
             frame_other.add(box_other);
         }
         
-        pack_start(box_label1, true, false);
-        pack_start(frame_upper, true, false);
-        pack_start(frame_lower, true, false);
-        pack_start(frame_digit, true, false);
-        pack_start(frame_punct, true, false);
-        pack_start(frame_other, true, false);
+        pack_start(box_label1, false, false);
+        pack_start(frame_upper, false, false);
+        pack_start(frame_lower, false, false);
+        pack_start(frame_digit, false, false);
+        pack_start(frame_punct, false, false);
+        pack_start(frame_other, false, false);
     }
 
     private class CharacterSetting : Object {
