@@ -112,17 +112,18 @@ public class PassGerWidget : Box {
                 var pop_help1 = new Popover(button_help1);
                 {
                     var label_help1 = new Label(
-                            _("You can specify the password length using the \n"
-                            + "spin box on the left.\n"
-                            + "You can also specify the type of characters \n"
-                            + "used for each character in the password using \n"
-                            + "the table below.\n"
-                            + "You can select the type of characters from \n"
-                            + "uppercase letters, lowercase letters, numbers, \n"
-                            + "and punctuation characters.\n"
-                            + "You can select or deselect all character types \n"
-                            + "for that column by clicking the column header.\n"
-                            + "Specify at least one type for each row."));
+                        _("You can specify the password length using the \n"
+                        + "spin box on the left.\n"
+                        + "You can also specify the type of characters \n"
+                        + "used for each character in the password using \n"
+                        + "the table below.\n"
+                        + "You can select the type of characters from \n"
+                        + "uppercase letters, lowercase letters, numbers, \n"
+                        + "and punctuation characters.\n"
+                        + "You can select or deselect all character types \n"
+                        + "for that column by clicking the column header.\n"
+                        + "Specify at least one type for each row.")
+                    );
                     
                     pop_help1.add(label_help1);
                     pop_help1.border_width = 10;

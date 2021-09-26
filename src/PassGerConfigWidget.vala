@@ -73,11 +73,12 @@ public class PassGerConfigWidget : Box {
                 var pop_help1 = new Popover(button_help1);
                 {
                     var label_help1 = new Label(
-                            _("Here you can specify the characters used to generate the password.\n"
-                            + "The pressed characters are used to generate the password.\n"
-                            + "On the contrary, the characters that are not pressed are not used for \n"
-                            + "password generation.\n"
-                            + "At least one character should be pressed on each category."));
+                        _("Here you can specify the characters used to generate the password.\n"
+                        + "The pressed characters are used to generate the password.\n"
+                        + "On the contrary, the characters that are not pressed are not used for \n"
+                        + "password generation.\n"
+                        + "At least one character should be pressed on each category.")
+                    );
                     
                     pop_help1.add(label_help1);
                     pop_help1.border_width = 10;

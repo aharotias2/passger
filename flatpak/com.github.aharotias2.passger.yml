@@ -1,0 +1,13 @@
+app-id: com.github.aharotias2.passger
+runtime: org.gnome.Platform
+runtime-version: '41'
+sdk: org.gnome.Sdk
+command: com.github.aharotias2.passger
+modules:
+  - name: com.github.aharotias2.passger
+    buildsystem: meson
+    sources:
+      - type: git
+        url: https://github.com/aharotias2/passger.git
+        branch: main
+        
