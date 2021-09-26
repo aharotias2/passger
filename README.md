@@ -47,6 +47,13 @@ Click the "Generate!" button.
 
 You have done to generate a random password starting with the specific string "Puppy".
 
+Caution
+----------------------------------------------------------------------------------------------------
+Too simple and patterned passwords can be easily guessed.  
+We hope that you will use it with that in mind.  
+We are not responsible for any damage caused by using this application.
+Please be careful.
+
 Build
 ----------------------------------------------------------------------------------------------------
 ### Requirements
