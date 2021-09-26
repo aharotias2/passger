@@ -60,6 +60,7 @@ int main(string[] args) {
             });
 
             top_box.pack_start(widget1, false, false);
+            top_box.margin = 4;
         }
         window.add(top_box);
         window.show_all();
