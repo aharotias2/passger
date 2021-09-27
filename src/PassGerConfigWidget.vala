@@ -52,8 +52,7 @@ public class PassGerConfigWidget : Box {
     public PassGerConfigWidget() {
         Object(
             orientation: Orientation.VERTICAL,
-            spacing: 5,
-            margin: 4
+            spacing: 5
         );
     }
     
