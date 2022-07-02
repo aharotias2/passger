@@ -1,0 +1,8 @@
+Package: PassGer
+Version: 0.0.1
+Architecture: all
+Maintainer: Takayuki Tanaka<aharotias2@gmail.com>
+Depends: libgtk-3-0
+Homepage: http://aharotias2.main.jp
+Description: A simple password generator.
+ You can specify the type of characters to use for each index of the password.

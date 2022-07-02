@@ -1,0 +1,6 @@
+#!/bin/bash
+
+echo Updating desktop database...
+update-desktop-database
+echo Updating icon cache...
+gtk-update-icon-cache
