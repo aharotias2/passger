@@ -1,0 +1,128 @@
+# ITALIAN TRANSLATION FOR PASSGER.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the com.github.aharotias2.passger package.
+# ALBANO BATTISTELLA <ALBANO_BATTISTELLA@HOTMAIL.COM>, 2022.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: com.github.aharotias2.passger\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-09-24 22:01+0900\n"
+"PO-Revision-Date: 2022-03-10 19:07+0100\n"
+"Last-Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
+"Language-Team: Italian <LL@li.org>\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/PassGer.vala:45
+msgid "PassGer - A simple password generator"
+msgstr ""
+
+#: src/PassGerWidget.vala:79
+msgid "Length: "
+msgstr ""
+
+#: src/PassGerWidget.vala:91
+msgid ""
+"You can specify the password length using the \n"
+"spin box on the left.\n"
+"You can also specify the type of characters \n"
+"used for each character in the password using \n"
+"the table below.\n"
+"You can select the type of characters from \n"
+"uppercase letters, lowercase letters, numbers, \n"
+"and punctuation characters.\n"
+"You can select or deselect all character types \n"
+"for that column by clicking the column header.\n"
+"Specify at least one type for each row."
+msgstr ""
+"Puoi specificare la lunghezza della password usando \n"
+"la casella di selezione a sinistra.\n"
+"Puoi anche specificare il tipo di caratteri \n"
+"usato per ogni carattere nella password usando \n"
+"la tabella qui sotto.\n"
+"Puoi selezionare il tipo di caratteri da \n"
+"lettere maiuscole, lettere minuscole, numeri, \n"
+"e caratteri di punteggiatura.\n"
+"Puoi selezionare o deselezionare tutti i tipi di carattere \n"
+"per quella colonna facendo clic sull'intestazione della colonna.\n"
+"Specificare almeno un tipo per ogni riga."
+
+#: src/PassGerWidget.vala:169
+msgid "Generate!"
+msgstr "Genera!"
+
+#: src/PassGerWidget.vala:255
+msgid ""
+"There is not enough characters available.\n"
+"Please add available characters on the right panel.\n"
+"Or uncheck the “Do not use duplicated characters” checkbox."
+msgstr ""
+"Non ci sono abbastanza caratteri disponibili.\n"
+"Aggiungi i caratteri disponibili sul pannello di destra.\n"
+"Oppure deseleziona la casella di controllo “Non utilizzare caratteri duplicati“."
+
+#: src/PassGerWidget.vala:263
+msgid ""
+"Setting is invalid. At least 1 Character should be selected on each type "
+"(upper, lower, digit, punct)"
+msgstr ""
+"L'impostazione non è valida. Deve essere selezionato almeno 1 carattere per ogni tipo "
+"(maiuscolo, minuscolo, cifra, punto)"
+
+#: src/PassGerWidget.vala:266
+msgid "At least 1 check should be checked on each rows."
+msgstr "Almeno 1 controllo deve essere verificato su ogni riga."
+
+#: src/PassGerConfigWidget.vala:46
+msgid "Character Setting"
+msgstr "Impostazione del carattere"
+
+#: src/PassGerConfigWidget.vala:55
+msgid ""
+"Here you can specify the characters used to generate the password.\n"
+"The pressed characters are used to generate the password.\n"
+"On the contrary, the characters that are not pressed are not used for \n"
+"password generation.\n"
+"At least one character should be pressed on each category."
+msgstr ""
+"Qui puoi specificare i caratteri utilizzati per generare la password.\n"
+"I caratteri premuti vengono utilizzati per generare la password.\n"
+"Al contrario, i caratteri che non vengono premuti non vengono utilizzati per \n"
+"generare password.\n"
+"Deve essere premuto almeno un carattere su ciascuna categoria."
+
+#: src/PassGerConfigWidget.vala:76
+msgid "Uppercase Letters"
+msgstr "Lettere maiuscole"
+
+#: src/PassGerConfigWidget.vala:86
+msgid "Lowercase Letters"
+msgstr "Lettere minuscole"
+
+#: src/PassGerConfigWidget.vala:95
+msgid "Digital characters"
+msgstr "Caratteri digitali"
+
+#: src/PassGerConfigWidget.vala:104
+msgid "Punctuation Characters"
+msgstr "Caratteri di punteggiatura"
+
+#: src/PassGerConfigWidget.vala:113
+msgid "Other Settings"
+msgstr "Altre impostazioni"
+
+#: src/PassGerConfigWidget.vala:117
+msgid "Do not use duplicated characters"
+msgstr "Non utilizzare caratteri duplicati"
+
+#: src/PassGerMath.vala:10
+msgid "Failed to open random file. exit."
+msgstr "Impossibile aprire il file casuale. Uscita."
+
+#: src/PassGerMath.vala:22
+#, c-format
+msgid "IOError: random_byte was failed (%s))"
+msgstr "Errore IO: random_byte non riuscito (%s))"
