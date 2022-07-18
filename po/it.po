@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: com.github.aharotias2.passger\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-24 22:01+0900\n"
-"PO-Revision-Date: 2022-03-10 19:07+0100\n"
+"PO-Revision-Date: 2022-07-18 08:45+0100\n"
 "Last-Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
 "Language-Team: Italian <LL@li.org>\n"
 "Language: it\n"
@@ -18,11 +18,11 @@ msgstr ""
 
 #: src/PassGer.vala:45
 msgid "PassGer - A simple password generator"
-msgstr ""
+msgstr "PassenGer - Un semplice generatore di password"
 
 #: src/PassGerWidget.vala:79
 msgid "Length: "
-msgstr ""
+msgstr "Lunghezza: "
 
 #: src/PassGerWidget.vala:91
 msgid ""
